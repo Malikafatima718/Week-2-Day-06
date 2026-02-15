@@ -1,0 +1,156 @@
+# Week-2-Day-06
+Mini Practice Programs
+# Student Management System
+students = {}
+
+def add_student():
+    roll = input("Enter Roll Number: ")
+    name = input("Enter Name: ")
+    marks = input("Enter Marks: ")
+    students[roll] = {"Name": name, "Marks": marks}
+    print("Student Added Successfully")
+
+def view_students():
+    if not students:
+        print("No Records Found")
+    else:
+        for roll, details in students.items():
+            print("Roll:", roll)
+            print("Name:", details["Name"])
+            print("Marks:", details["Marks"])
+            print("-------------------")
+
+def search_student():
+    roll = input("Enter Roll Number to Search: ")
+    if roll in students:
+        print("Record Found")
+        print(students[roll])
+    else:
+        print("Student Not Found")
+
+def delete_student():
+    roll = input("Enter Roll Number to Delete: ")
+    if roll in students:
+        del students[roll]
+        print("Student Deleted")
+    else:
+        print("Student Not Found")
+
+while True:
+    print("\n1.Add 2.View 3.Search 4.Delete 5.Exit")
+    choice = input("Enter Choice: ")
+
+    if choice == "1":
+        add_student()
+    elif choice == "2":
+        view_students()
+    elif choice == "3":
+        search_student()
+    elif choice == "4":
+        delete_student()
+    elif choice == "5":
+        break
+
+ # Calculator Using Functions
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        return "Division by Zero Error"
+    return a / b
+
+num1 = float(input("Enter First Number: "))
+num2 = float(input("Enter Second Number: "))
+
+print("1.Add 2.Subtract 3.Multiply 4.Divide")
+choice = input("Enter Choice: ")
+
+if choice == "1":
+    print("Result:", add(num1, num2))
+elif choice == "2":
+    print("Result:", subtract(num1, num2))
+elif choice == "3":
+    print("Result:", multiply(num1, num2))
+elif choice == "4":
+    print("Result:", divide(num1, num2))
+else:
+    print("Invalid Choice")
+
+# Menu Driven Program
+while True:
+    print("\n1.Square 2.Cube 3.Exit")
+    choice = input("Enter Choice: ")
+
+    if choice == "1":
+        num = int(input("Enter Number: "))
+        print("Square:", num * num)
+
+    elif choice == "2":
+        num = int(input("Enter Number: "))
+        print("Cube:", num * num * num)
+
+    elif choice == "3":
+        print("Program Exited")
+        break
+
+    else:
+        print("Invalid Choice")
+
+# File Based Record System
+def add_record():
+    file = open("students.txt", "a")
+    roll = input("Enter Roll Number: ")
+    name = input("Enter Name: ")
+    marks = input("Enter Marks: ")
+    file.write(roll + "," + name + "," + marks + "\n")
+    file.close()
+    print("Record Saved")
+
+def view_record():
+    try:
+        file = open("students.txt", "r")
+        data = file.readlines()
+        for line in data:
+            print(line.strip())
+        file.close()
+    except FileNotFoundError:
+        print("File Not Found")
+
+while True:
+    print("\n1.Add Record 2.View Record 3.Exit")
+    choice = input("Enter Choice: ")
+
+    if choice == "1":
+        add_record()
+    elif choice == "2":
+        view_record()
+    elif choice == "3":
+        break
+    else:
+        print("Invalid Choice")
+
+# Dictionary Application - Word Frequency Counter
+text = input("Enter a Sentence: ")
+words = text.split()
+
+frequency = {}
+
+for word in words:
+    if word in frequency:
+        frequency[word] += 1
+    else:
+        frequency[word] = 1
+
+print("Word Frequency:")
+for word, count in frequency.items():
+    print(word, ":", count)
+
+    else:
+        print("Invalid Choice")
